@@ -3,7 +3,7 @@ I’m using the Playwright automation framework to practice creating and executi
 
 
 
-Playwright Essential Branch Home_Contacts:
+Playwright Essential Branch contact_page:
 
 *  Create a Test Using Data Factory and Helper Functions
 *  Create an initial message through Contact Functionality

@@ -33,6 +33,4 @@ test.describe("Login Tests", () => {
 
     });
 
-    test("Login with an existing user", async ({ page }) => {
-    });
 });
