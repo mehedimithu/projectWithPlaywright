@@ -1,3 +1,8 @@
+
+I’m using the Playwright automation framework to practice creating and executing end-to-end test scripts on a demo web application, exploring browser interactions, locators, and page object patterns.
+
+
+
 Playwright Essential Branch Home_Contacts:
 
 *  Create a Test Using Data Factory and Helper Functions
