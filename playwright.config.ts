@@ -9,6 +9,22 @@ import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
+const authFile = '.auth/customer01.json';
+
+// function to ensure the auth directory exists
+export const ensureAuthDirExists = () => {
+  const fs = require('fs');
+  const dir = path.dirname(authFile);
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true });
+    return true; // Directory was created
+  }
+  if (!fs.existsSync(authFile)) return true; // file missing, treat as empty
+
+  const content = fs.readFileSync(authFile, 'utf-8').trim();
+  return content.length === 0; // true if empty, false if has data
+};
+
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
@@ -26,9 +42,9 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    //storageState: 'auth/customer01.json', // <— load cookies automatically
+    //storageState: '.auth/customer.json', // <— load cookies automatically
     //baseURL: process.env.BASE_URL,
-   // headless: true,
+    // headless: true,
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
@@ -38,9 +54,16 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+
+    ...(ensureAuthDirExists() ? [{ name: 'setup', testMatch: authFile }] : []),
+    // conditionally add the auth project
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: authFile
+      },
+      dependencies: ensureAuthDirExists() ? ['setup'] : []
     },
 
     {

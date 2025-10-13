@@ -2,10 +2,20 @@
   "cookies": [
     {
       "name": "cf_clearance",
-      "value": "vTakXa5FMGAL.vq_Ds7F_Yln8J1vVjIRvzKssvAsRTc-1760252179-1.2.1.1-bGOSqdZLci9lY4XEJKy8t8vL4b1LXeiPsKIA5yi9QwmWhODOg796dogHU9Ys6phlY8LWc63jb5tjt12De08XXqj6aYBhNeHwPlEcKJnod7JSluzNd4.bTDWcUcEWcVKYgfrawkHYxXNG.PUngULZu.NJt9K604JEDgTUs3bjzH_wacTsKoAwlCNx0KIHQ.A4jF.10WRS0DT1ztvQwdWl6vu7IzAidKKYJzUB3y1l5GA",
+      "value": "oAPowYrEtHZnVxghdaxG.ChLJQWCb6YIDYrRDbecnYM-1759938380-1.2.1.1-v7Pmm1u0JlHzJCbE.uM8u6.6mRgZunBn1T0xVIfGRU0clYPe8m7lQSsWyeqH2.TDTPXpxinKJAOcHX4hN6aoyPXkRmx_hym3gpaPY8mWqFHEG4K.Mc79GBGhtLfoghoYm00xdVYTnoM9vxp3BdTM6f1zxkqWKaLEfibw5rF7xLsu2N2J2S9bHzeppAjRMa1q97Cdf3EvZC8S6RrmE1WWeaXTkn_56Z8w626_55rd4.k",
       "domain": ".practicesoftwaretesting.com",
       "path": "/",
-      "expires": 1791788179.241562,
+      "expires": 1791474380.873407,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "cf_clearance",
+      "value": "nfahLhkq2E5vas_UVutnJzoIILm8Xnb9xCzEKFxXQes-1760333437-1.2.1.1-pbG_6DN52_ZUg2WQEIMEUS6tIPd9Iw5rHJ2_gJjQhCLz_LTjvcDyolHLxnht_jB2iM6rvZbP3ffyz.aVWNxmqaWcqmN8NJLSfY2B8krgh2p6vnzXSoLCvRSoEiAmVB3l4hQuFzQQ2BEJt.DB97AVoJJT3Of9rakoWBEEHV9H0BW7jV_Z100XIWxg3fuwwNWPzvxw.gP4nDrwUXY9ENnKoPbaTf_s27z6DimURYmo8JA",
+      "domain": ".practicesoftwaretesting.com",
+      "path": "/",
+      "expires": 1791869437.810202,
       "httpOnly": true,
       "secure": true,
       "sameSite": "None",
@@ -13,5 +23,15 @@
       "_crHasCrossSiteAncestor": false
     }
   ],
-  "origins": []
+  "origins": [
+    {
+      "origin": "https://practicesoftwaretesting.com",
+      "localStorage": [
+        {
+          "name": "auth-token",
+          "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5wcmFjdGljZXNvZnR3YXJldGVzdGluZy5jb20vdXNlcnMvbG9naW4iLCJpYXQiOjE3NTk5MzgzODIsImV4cCI6MTc1OTkzODY4MiwibmJmIjoxNzU5OTM4MzgyLCJqdGkiOiJ6cTQ4OFpjVnVkMmkyNGExIiwic3ViIjoiMDFrNzI4MGF2ZTF3OGtneHBhamYyMG52Y3giLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.cCoBFI00UaPRdzH85GiikmZdf8c7oR2qSgcewzOT4rg"
+        }
+      ]
+    }
+  ]
 }

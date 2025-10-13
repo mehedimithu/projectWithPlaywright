@@ -5,12 +5,16 @@ export class LoginPage {
     readonly emailInput: Locator;
     readonly passwordInput: Locator;
     readonly loginButton: Locator;
+    readonly navMenu: Locator;
+    readonly welcomeTitle: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.emailInput = page.getByPlaceholder('Your email');
         this.passwordInput = page.getByPlaceholder('Your password');
         this.loginButton = page.getByRole('button', { name: 'Login' });
+        this.navMenu = page.getByTestId("nav-menu");
+        this.welcomeTitle = page.getByTitle('Practice Software Testing - Toolshop');
     }
 
     async goto() {
