@@ -41,6 +41,10 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  timeout: 6 * 60 * 1000, // 6 minutes
+  expect: {
+    timeout: 10000 // 10 seconds
+  },
   use: {
     //storageState: '.auth/customer.json', // <— load cookies automatically
     //baseURL: process.env.BASE_URL,

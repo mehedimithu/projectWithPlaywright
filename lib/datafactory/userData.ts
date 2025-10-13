@@ -20,6 +20,6 @@ export async function getUserDetails(userAuthFile: string) {
     });
 
     expect(response.status()).toBe(200);
-    return response.json();
+    return await response.json();
 }
 

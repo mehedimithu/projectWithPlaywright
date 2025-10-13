@@ -13,7 +13,7 @@ export async function createAMessage(name: string, subject: string, message: str
     const token = storageData.origins[0].localStorage.find((item: { name: string; }) => item.name === 'auth-token')?.value;
 
     // Send POST request to create a message
-    const response = await requestContext.post(process.env.API_URL + '/messages', {
+    const response = await requestContext.post(`${process.env.API_URL}/messages`, {
         data: {
             "name": name,
             "subject": subject,
@@ -26,5 +26,5 @@ export async function createAMessage(name: string, subject: string, message: str
 
     });
     expect(response.status()).toBe(200);
-    return response.json();
+    return await response.json();
 }
