@@ -4,6 +4,10 @@ import { registerAUser } from "@datafactory/register";
 import { LoginPage } from "@pages/login.page";
 import { credentials } from "@helpers/credentials";
 import { ContactPage } from "@pages/contact.page";
+import { createAMessage } from "@datafactory/message";
+import { getUserDetails } from "@datafactory/userData";
+import { extractAuthToken } from "@helpers/get_token";
+
 
 test.describe.configure({ mode: 'serial' });
 
@@ -15,7 +19,7 @@ test.describe("Login Tests", () => {
         await page.waitForTimeout(5000);
     });
 
-    test("Login with exeting user and save auth file", async ({ page }) => {
+    test("Login with exeting user and save auth file", async ({ page, context }) => {
 
         //conts 
         const login = new LoginPage(page);
@@ -24,7 +28,7 @@ test.describe("Login Tests", () => {
 
         // Perform login
         await login.goto();
-        await login.login(email, password);
+        await login.loginIntoSystem(email, password);
 
         // Save authentication state to a file
         await page.context().storageState({ path: credentials().userAuthFile });
@@ -34,26 +38,22 @@ test.describe("Login Tests", () => {
         await expect(page.getByTitle('Practice Software Testing - Toolshop')).toBeVisible();
         await page.screenshot({ path: 'screenshots/login.png', fullPage: true });
 
-        // Use test.step to create a message through the contact page
-        await test.step('Create a message through the contact page.', async () => {
-            const contactPage = new ContactPage(page);
+        // Extract auth-token and save to a file
+        const extractToken = await extractAuthToken(page, context, credentials().authToken);
+        console.log('Extracted Token:', extractToken.token);
 
-            await contactPage.gotoContactPage();
-            await page.waitForTimeout(2000);
+        await page.waitForTimeout(3000);
 
-            // Select "Customer service" from the Subject dropdown
-            await contactPage.dropdownSubject.selectOption('customer-service');
-            await contactPage.messageField.fill('Hello! This message is just for testing purposes to ensure everything is working correctly.');
-            await contactPage.submitButton.click();
-
-            await page.waitForTimeout(10000);
-
-            // Validate result (example)
-            await expect(contactPage.successMessage).toContainText('Thanks for your message! We will contact you shortly.' );
+        // Use to get user details through the datafactory        
+        await test.step('Get user details through the datafactory', async () => {
+            getUserDetails(credentials().authToken).then(response => {
+                console.log("User Details", response);
+            });
         });
 
     });
-
-
-
 });
+
+
+
+

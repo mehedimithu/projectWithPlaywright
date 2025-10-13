@@ -13,5 +13,15 @@
       "_crHasCrossSiteAncestor": false
     }
   ],
-  "origins": []
+  "origins": [
+    {
+      "origin": "https://practicesoftwaretesting.com",
+      "localStorage": [
+        {
+          "name": "auth-token",
+          "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2FwaS5wcmFjdGljZXNvZnR3YXJldGVzdGluZy5jb20vdXNlcnMvbG9naW4iLCJpYXQiOjE3NjAzNjExMzMsImV4cCI6MTc2MDM2MTQzMywibmJmIjoxNzYwMzYxMTMzLCJqdGkiOiJvT2dpQUcwcHZWaEkwcjhmIiwic3ViIjoiMDFLN0VUR0NUWFlTVzY2RUdCMkFDUjY0NTUiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3Iiwicm9sZSI6InVzZXIifQ.wcNhoZIjGpBDXlabCcYOIYkpCiCE34cbAS96iCpORa8"
+        }
+      ]
+    }
+  ]
 }
