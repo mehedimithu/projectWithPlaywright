@@ -8,9 +8,9 @@ node_modules/
 /playwright/.auth/
 
 
+
 # .gitignore
 .env
 .storage
-.auth
 .gitignore
 
