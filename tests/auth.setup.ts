@@ -2,6 +2,7 @@ import { LoginPage } from "@pages/login/login.page";
 import { test as setup, expect } from "@playwright/test";
 import { credentials } from "@helpers/credentials";
 import { extractAuthToken } from "@helpers/get_token";
+import { getUserDetails } from "@datafactory/userData";
 
 const authFile = credentials().authToken;
 
@@ -28,4 +29,13 @@ setup('auth', async ({ page, context }) => {
     const extractToken = await extractAuthToken(page, context, credentials().authToken);
     console.log('Extracted Token:', extractToken.token);
 
+    await page.waitForTimeout(5000);
+
+    // Use to get user details through the datafactory        
+    await getUserDetails(credentials().authToken).then(response => {
+        console.log("User Details", response);
+    });
+
 });
+
+

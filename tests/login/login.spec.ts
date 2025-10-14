@@ -1,5 +1,5 @@
 
-import { test, expect } from "@fixtures/page.fixtures";
+import { test, expect } from "@fixtures/pages.fixture";
 import { registerAUser } from "@datafactory/register";
 import { credentials } from "@helpers/credentials";
 import { getUserDetails } from "@datafactory/userData";
@@ -17,9 +17,7 @@ test.describe("Login Tests", () => {
     });
 
     test("Login with exeting user and save auth file", async ({ page, loginPage, context }) => {
-
         //conts 
-        //const login = new LoginPage(page);
         const email = process.env.EMAIL;
         const password = process.env.PASSWORD;
 
@@ -38,15 +36,6 @@ test.describe("Login Tests", () => {
         // Extract auth-token and save to a file
         const extractToken = await extractAuthToken(page, context, credentials().authToken);
         console.log('Extracted Token:', extractToken.token);
-
-        await page.waitForTimeout(3000);
-
-        // Use to get user details through the datafactory        
-        await test.step('Get user details through the datafactory', async () => {
-            getUserDetails(credentials().authToken).then(response => {
-                console.log("User Details", response);
-            });
-        });
 
     });
 });
