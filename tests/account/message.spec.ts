@@ -1,15 +1,10 @@
-import { test, expect } from "@playwright/test";
+import { expect } from "@playwright/test";
+import { test } from "@fixtures/base.fixture";
 import { createAMessage } from "@datafactory/message";
-import { LoginPage } from "@pages/login/login.page";
-import { MessagesPage } from "@pages/accounts/messages.page";
 import { credentials } from "@helpers/credentials";
 import { ContactPage } from "@pages/contacts/contact.page";
 
-test("Customer response to a message", async ({ page, context }) => {
-
-    const messagesPage = new MessagesPage(page);
-    const loginPage = new LoginPage(page);
-
+test("Customer response to a message", async ({ page, messagesPage, loginPage }) => {
     // Login to the system
     await loginPage.goto();
     await loginPage.loginIntoSystem(process.env.EMAIL, process.env.PASSWORD);
@@ -48,7 +43,7 @@ test("Customer response to a message", async ({ page, context }) => {
     await expect(messagesPage.table).toBeVisible();
     const rowCount = await messagesPage.rows.count();
     console.log("Total number of messages:", rowCount);
-   // await expect(messagesPage.rows).toHaveCount(1);
+    // await expect(messagesPage.rows).toHaveCount(1);
 
     // Click on the Details link of the first message
     await messagesPage.detailsLink.first().click();
