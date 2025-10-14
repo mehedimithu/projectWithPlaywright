@@ -1,10 +1,8 @@
-
 import { test as baseTest, expect as baseExpect, type Page, type ConsoleMessage } from "@playwright/test";
 
 class PageConsol {
     readonly consoleMessages: ConsoleMessage[] = [];
     readonly page: Page;
-
     constructor(page: Page) {
         this.page = page;
         this.page.on('console', msg => {

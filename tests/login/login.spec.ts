@@ -1,8 +1,7 @@
 
-import { test, expect } from "@fixtures/pages.fixture";
+import { test, expect } from "@fixtures/base.fixture";
 import { registerAUser } from "@datafactory/register";
 import { credentials } from "@helpers/credentials";
-import { getUserDetails } from "@datafactory/userData";
 import { extractAuthToken } from "@helpers/get_token";
 
 
