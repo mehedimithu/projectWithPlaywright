@@ -1,9 +1,9 @@
 import { test, expect } from "@playwright/test";
 import { createAMessage } from "@datafactory/message";
-import { LoginPage } from "@pages/login.page";
-import { MessagesPage } from "@pages/messages.page";
+import { LoginPage } from "@pages/login/login.page";
+import { MessagesPage } from "@pages/accounts/messages.page";
 import { credentials } from "@helpers/credentials";
-import { ContactPage } from "@pages/contact.page";
+import { ContactPage } from "@pages/contacts/contact.page";
 
 test("Customer response to a message", async ({ page, context }) => {
 

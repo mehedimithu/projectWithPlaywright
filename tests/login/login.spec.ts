@@ -1,10 +1,7 @@
 
-import { test, expect } from "@playwright/test";
+import { test, expect } from "@fixtures/page.fixtures";
 import { registerAUser } from "@datafactory/register";
-import { LoginPage } from "@pages/login.page";
 import { credentials } from "@helpers/credentials";
-import { ContactPage } from "@pages/contact.page";
-import { createAMessage } from "@datafactory/message";
 import { getUserDetails } from "@datafactory/userData";
 import { extractAuthToken } from "@helpers/get_token";
 
@@ -19,16 +16,16 @@ test.describe("Login Tests", () => {
         await page.waitForTimeout(5000);
     });
 
-    test("Login with exeting user and save auth file", async ({ page, context }) => {
+    test("Login with exeting user and save auth file", async ({ page, loginPage, context }) => {
 
         //conts 
-        const login = new LoginPage(page);
+        //const login = new LoginPage(page);
         const email = process.env.EMAIL;
         const password = process.env.PASSWORD;
 
         // Perform login
-        await login.goto();
-        await login.loginIntoSystem(email, password);
+        await loginPage.goto();
+        await loginPage.loginIntoSystem(email, password);
 
         // Save authentication state to a file
         await page.context().storageState({ path: credentials().userAuthFile });

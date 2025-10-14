@@ -1,10 +1,11 @@
-import { LoginPage } from "@pages/login.page";
+import { LoginPage } from "@pages/login/login.page";
 import { test as setup, expect } from "@playwright/test";
 import { credentials } from "@helpers/credentials";
+import { extractAuthToken } from "@helpers/get_token";
 
 const authFile = credentials().authToken;
 
-setup('auth', async ({ page }) => {
+setup('auth', async ({ page, context }) => {
 
     //conts
     const login = new LoginPage(page);
@@ -21,6 +22,10 @@ setup('auth', async ({ page }) => {
     await expect(login.welcomeTitle).toBeVisible();
 
     // Save authentication state to a file
-    await page.context().storageState({ path: authFile });
+    // await page.context().storageState({ path: authFile });
+
+    // Extract auth-token and save to a file
+    const extractToken = await extractAuthToken(page, context, credentials().authToken);
+    console.log('Extracted Token:', extractToken.token);
 
 });
