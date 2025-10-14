@@ -2,7 +2,7 @@ import { LoginPage } from "@pages/login.page";
 import { test as setup, expect } from "@playwright/test";
 import { credentials } from "@helpers/credentials";
 
-const authFile = credentials().userAuthFile;
+const authFile = credentials().authToken;
 
 setup('auth', async ({ page }) => {
 
@@ -13,7 +13,7 @@ setup('auth', async ({ page }) => {
 
     // Perform login
     await login.goto();
-    await login.login(email, password);
+    await login.loginIntoSystem(email, password);
 
     await page.waitForTimeout(3000);
 

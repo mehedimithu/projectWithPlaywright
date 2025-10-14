@@ -71,6 +71,4 @@ test("Customer response to a message", async ({ page, context }) => {
     // Validate the reply is added to the reply list    
     await expect(messagesPage.replyList).toContainText("This is a reply to your message. We have received your inquiry and will get back to you shortly.");
 
-
-
 });
