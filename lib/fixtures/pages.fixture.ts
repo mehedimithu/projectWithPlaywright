@@ -3,13 +3,15 @@ import { LoginPage } from "@pages/login/login.page";
 import { AccountPage } from "@pages/accounts/account.page";
 import { ContactPage } from "@pages/contacts/contact.page";
 import { MessagesPage } from "@pages/accounts/messages.page";
-export {expect} from "@playwright/test";
+import { HomePage } from "@pages/home/home.page";
+export { expect } from "@playwright/test";
 
 type MyPages = {
     loginPage: LoginPage;
     accountPage: AccountPage;
     contactPage: ContactPage;
     messagesPage: MessagesPage;
+    homePage: HomePage;
 };
 
 export const test = baseTest.extend<MyPages>({
@@ -25,5 +27,8 @@ export const test = baseTest.extend<MyPages>({
     },
     messagesPage: async ({ page }, use) => {
         await use(new MessagesPage(page));
+    },
+    homePage: async ({ page }, use) => {
+        await use(new HomePage(page))
     }
 });
