@@ -1,6 +1,4 @@
 
-import { HomePage } from "@pages/home/home.page";
-import { LoginPage } from "@pages/login/login.page";
 import { test, expect } from "@fixtures/base.fixture";
 
 
