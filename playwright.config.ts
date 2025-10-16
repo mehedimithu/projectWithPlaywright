@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-const authFile = '.storage/authToken.json';
+const authFile = '.auth/customer01.json';
 
 // function to ensure the auth directory exists
 export const ensureAuthDirExists = () => {

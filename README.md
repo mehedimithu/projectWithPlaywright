@@ -1,7 +1,7 @@
 I’m using the Playwright automation framework to practice creating and executing end-to-end test scripts on a demo web application, exploring browser interactions, locators, and page object patterns.
 
 
-🧪 Playwright Essential Branch — Test Suites Overview
+## 🧪 Playwright Essential Branch — Test Suites Overview
 
 This repository is used to practice end-to-end (E2E) automation using Playwright, focusing on:
 	•	Browser interaction and element locators
@@ -11,7 +11,7 @@ This repository is used to practice end-to-end (E2E) automation using Playwright
 
 ⸻
 
-📘 Test Suite: contact_page (Please switch to contact_page Branch)
+## 📘 Test Suite: contact_page (Please switch to contact_page Branch)
 
 Purpose
 
@@ -68,7 +68,7 @@ Hints / Implementation Notes
 
 ⸻
 
-🏠 Test Suite: home_page (Please switch to home_page Branch)
+## 🏠 Test Suite: home_page (Please switch to home_page Branch)
 
 Purpose
 

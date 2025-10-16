@@ -14,5 +14,9 @@ export class HomePage {
         await this.page.goto(`${process.env.BASE_URL}`);
     }
 
+    async nevigateToWebsiteWithBugs(){
+        await this.page.goto(`${process.env.WITHBUGS_URL}`);
+    }
+
    
 }

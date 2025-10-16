@@ -5,10 +5,20 @@ test.describe.configure({ mode: 'serial' });
 
 test.describe("Home Page Tests", () => {
 
+    test.beforeEach("Login into the system", async ({ loginPage, page }) => {
+        const email = process.env.EMAIL;
+        const password = process.env.PASSWORD;
+
+        await loginPage.goto();
+        await loginPage.loginIntoSystem(email, password);
+        await page.waitForTimeout(5000);
+
+    });
+
     test.skip("Verify products data in ui from API data", async ({ page, loginPage, homePage }) => {
         let products: any;
 
-        await test.step.skip('Fetch products from API ', async () => {
+        await test.step('Fetch products from API ', async () => {
             // Fetch products from API
             await page.route(`${process.env.API_URL}/products**`, async (route) => {
                 const response = await route.fetch();
@@ -19,15 +29,7 @@ test.describe("Home Page Tests", () => {
             );
         });
 
-        await test.step.skip('Verify the products from the ui ', async () => {
-
-            const email = process.env.EMAIL;
-            const password = process.env.PASSWORD;
-
-            await loginPage.goto();
-            await page.waitForTimeout(2000);
-            await loginPage.loginIntoSystem(email, password);
-            await page.waitForTimeout(2000);
+        await test.step('Verify the products from the ui ', async () => {
 
             await homePage.navigateToHome();
             await page.waitForTimeout(8000);
@@ -78,9 +80,7 @@ test.describe("Home Page Tests", () => {
     });
 
 
-    test("Validate products data is loading from the Har file ", async ({ page, loginPage, homePage }) => {
-        const email = process.env.EMAIL;
-        const password = process.env.PASSWORD;
+    test.skip("Validate products data is loading from the Har file ", async ({ page, homePage }) => {
 
         await test.step("Mocked Products", async () => {
             await page.routeFromHAR(".hars/product.har", {
@@ -88,9 +88,7 @@ test.describe("Home Page Tests", () => {
                 update: true,
             });
         });
-        await loginPage.goto();
-        await loginPage.loginIntoSystem(email, password);
-        await page.waitForTimeout(5000);
+
         await homePage.navigateToHome();
         await page.waitForTimeout(8000);
 
@@ -98,4 +96,17 @@ test.describe("Home Page Tests", () => {
         await expect(productLocator).toContainText("Combination Pliers");
         await expect(productLocator).toContainText("14.15");
     });
+
+    test("Check for broken images", async ({ page, homePage }) => {
+        await homePage.navigateToHome();
+       // await homePage.nevigateToWebsiteWithBugs();
+        await page.waitForTimeout(2000);
+        const brokenImages = await page.evaluate(() => {
+            return Array.from(document.querySelectorAll("img"))
+                .filter((img) => img.naturalWidth === 0 || img.naturalHeight === 0)
+                .map((img) => img.src);
+        });
+        expect(brokenImages.length, `Broken Images: ${brokenImages}`).toBe(0);
+    });
+
 });
