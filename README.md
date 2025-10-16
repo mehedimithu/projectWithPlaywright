@@ -22,7 +22,9 @@ Before installing Playwright, ensure the following are installed on your system:
 ⚙️ 2. Install Playwright
 
 Initialize Playwright in your project:
-npm init playwright@latest
+ ```bash 
+ npm init playwright@latest 
+ ```
 
 This command will:
 • Create a basic test structure.
@@ -38,8 +40,8 @@ This command will:
 
 projectWithPlaywright/
 ├── tests/
-│ ├── home/
-│ │ └── home.spec.ts
+│ ├── login/
+│ │ └── login.spec.ts
 │ ├── contact/
 │ │ └── contact.spec.ts
 │ └── lib/ fixtures/
@@ -60,25 +62,25 @@ projectWithPlaywright/
 
 Add these as needed:
 
-Environment variables- dotenv npm install dotenv
-Faker data for test input- @faker-js/faker npm install @faker-js/faker
-File utilities- fs-extra npm install fs-extra
-Allure reports- allure-playwright npm install -D allure-playwright
-Linting - eslint npm install -D eslint
-TypeScript- typescript ts-node npm install -D typescript ts-node
+Environment variables- dotenv  ```bash npm install dotenv ```
+Faker data for test input- @faker-js/faker  ```bash  npm install @faker-js/faker ```
+File utilities- fs-extra ```bash npm install fs-extra ```
+Allure reports- allure-playwright ```bash npm install -D allure-playwright ```
+Linting - eslint ```bash npm install -D eslint ```
+TypeScript- typescript ts-node ```bash npm install -D typescript ts-node ```
 
 
 🧪 5. Verify Installation
 
 Run the following command to check Playwright:
 
-npx playwright --version
+```bash npx playwright --version ```
 
 Then execute your first test:
-npx playwright test
+```bash npx playwright test ```
 
 Open the test report:
-npx playwright show-report
+```bash npx playwright show-report ```
 
 📘 6. Environment Variables (.env Example)
 API_URL=https://api.demotestsite.com
@@ -88,7 +90,7 @@ PASSWORD=secret123
 ✅ Now you’re ready to run and write Playwright tests!
 
 To start the test runner in UI mode:
-npx playwright test --ui
+```bash npx playwright test --ui ```
 
 
 Notes: Please switch to Branch:  contact_page, home_page
