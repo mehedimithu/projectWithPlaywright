@@ -108,7 +108,7 @@ npx playwright show-report
 
 📘 6. Environment Variables (.env Example)
 ```bash
-API_URL=https://api.demotestsite.com
+API_URL=https://practicesoftwaretesting.com
 EMAIL=testuser@demo.com
 PASSWORD=secret123
 ```
