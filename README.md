@@ -42,16 +42,16 @@ projectWithPlaywright/
 │ │ └── home.spec.ts
 │ ├── contact/
 │ │ └── contact.spec.ts
-│ └── fixtures/
+│ └── lib/ fixtures/
 │ └── base.fixture.ts
-├── pages/
+├── lib/pages/
 │ ├── login.page.ts
 │ ├── home.page.ts
 │ └── contact.page.ts
-├── data/
+├── hars/
 │ └── product.har
-├── helpers/
-│ └── utils.ts
+├── lib/ helpers/
+│ └── credentials.ts
 ├── .env
 ├── playwright.config.ts
 └── package.json
