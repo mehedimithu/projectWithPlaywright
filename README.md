@@ -98,7 +98,7 @@ npx playwright --version
 
 Then execute your first test:
 ```bash 
-npx playwright test 
+npx playwright test login.spec.ts 
 ```
 
 Open the test report:
