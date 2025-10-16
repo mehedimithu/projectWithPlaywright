@@ -1,20 +1,95 @@
-
 I’m using the Playwright automation framework to practice creating and executing end-to-end test scripts on a demo web application, exploring browser interactions, locators, and page object patterns.
 
+# 🎭 Playwright End-to-End Testing Setup
+This project uses **[Playwright](https://playwright.dev/)** for end-to-end (E2E) test automation.  
+Follow the steps below to install all dependencies and get started.
+---
+
+## 🧩 1. Prerequisites
+
+Before installing Playwright, ensure the following are installed on your system:
+
+- **Node.js** ≥ 16
+
+  ```bash
+  node -v
+
+  	•	npm or yarn
+    •	VS Code (recommended)
+  •	Git (for version control)
+  ```
+
+⚙️ 2. Install Playwright
+
+Initialize Playwright in your project:
+npm init playwright@latest
+
+This command will:
+• Create a basic test structure.
+• Install Playwright and browsers.
+• Generate playwright.config.ts.
+
+✅ Browsers installed by default:
+• Chromium
+• Firefox
+• WebKit
+
+📁 3. Recommended Project Structure
+
+projectWithPlaywright/
+├── tests/
+│ ├── home/
+│ │ └── home.spec.ts
+│ ├── contact/
+│ │ └── contact.spec.ts
+│ └── fixtures/
+│ └── base.fixture.ts
+├── pages/
+│ ├── login.page.ts
+│ ├── home.page.ts
+│ └── contact.page.ts
+├── data/
+│ └── product.har
+├── helpers/
+│ └── utils.ts
+├── .env
+├── playwright.config.ts
+└── package.json
+
+🔧 4. Optional Dependencies
+
+Add these as needed:
+
+Environment variables- dotenv npm install dotenv
+Faker data for test input- @faker-js/faker npm install @faker-js/faker
+File utilities- fs-extra npm install fs-extra
+Allure reports- allure-playwright npm install -D allure-playwright
+Linting - eslint npm install -D eslint
+TypeScript- typescript ts-node npm install -D typescript ts-node
 
 
-Playwright Essential Branch contact_page:
+🧪 5. Verify Installation
 
-*  Create a Test Using Data Factory and Helper Functions
-*  Create an initial message through Contact Functionality
-*   Test Steps:
-*   Login with user.
-*   Create a message through /contact page.
-*   View the /account/messages page form a logged in user.
-*   Click to see the details of the message.
-*   Validate the text in the original message.
-*   Add a text reply.
-*   Make an assertion to validate the reply shows up in the replies section 
+Run the following command to check Playwright:
 
-Hints:
-*   When using the API datafactory, you will need a token for authentication.
+npx playwright --version
+
+Then execute your first test:
+npx playwright test
+
+Open the test report:
+npx playwright show-report
+
+📘 6. Environment Variables (.env Example)
+API_URL=https://api.demotestsite.com
+EMAIL=testuser@demo.com
+PASSWORD=secret123
+
+✅ Now you’re ready to run and write Playwright tests!
+
+To start the test runner in UI mode:
+npx playwright test --ui
+
+
+Notes: Please switch to Branch:  contact_page, home_page
+
