@@ -107,9 +107,11 @@ npx playwright show-report
 ```
 
 📘 6. Environment Variables (.env Example)
+```bash
 API_URL=https://api.demotestsite.com
 EMAIL=testuser@demo.com
 PASSWORD=secret123
+```
 
 ✅ Now you’re ready to run and write Playwright tests!
 
