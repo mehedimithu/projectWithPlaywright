@@ -18,7 +18,7 @@ Before installing Playwright, ensure the following are installed on your system:
   •Git (for version control)
   ```
 
-⚙️ 2. Install Playwright
+## ⚙️ 2. Install Playwright
 
 Initialize Playwright in your project:
  ```bash 
@@ -35,7 +35,7 @@ This command will:
 • Firefox
 • WebKit
 
-📁 3. Recommended Project Structure
+## 📁 3. Recommended Project Structure
 
 projectWithPlaywright/
 ├── tests/
@@ -57,7 +57,7 @@ projectWithPlaywright/
 ├── playwright.config.ts
 └── package.json
 
-🔧 4. Optional Dependencies
+## 🔧 4. Optional Dependencies
 
 Add these as needed:
 
@@ -87,7 +87,7 @@ npm install -D typescript ts-node
 ```
 
 
-🧪 5. Verify Installation
+## 🧪 5. Verify Installation
 
 Run the following command to check Playwright:
 
@@ -105,7 +105,7 @@ Open the test report:
 npx playwright show-report 
 ```
 
-📘 6. Environment Variables (.env Example)
+## 📘 6. Environment Variables (.env Example)
 ```bash
 API_URL=https://practicesoftwaretesting.com
 EMAIL=testuser@demo.com
@@ -120,5 +120,5 @@ npx playwright test --ui
 ```
 
 
-Notes: Please switch to Branch:  contact_page, home_page
+## Notes: Please switch to Branch:  contact_page, home_page
 
