@@ -1,12 +1,11 @@
 
 import { test, expect } from "@fixtures/base.fixture";
 
-
 test.describe.configure({ mode: 'serial' });
 
 test.describe("Home Page Tests", () => {
 
-    test("Verify products data in ui from API data", async ({ page, loginPage, homePage }) => {
+    test.skip("Verify products data in ui from API data", async ({ page, loginPage, homePage }) => {
         let products: any;
 
         await test.step.skip('Fetch products from API ', async () => {
@@ -73,9 +72,30 @@ test.describe("Home Page Tests", () => {
 
             const productLocator = homePage.productLocator;
             await expect(productLocator.getByRole('link').first()).toContainText("Mocked Product");
+            await expect(productLocator.getByRole('link').first()).toContainText("999.09");
+            await expect(productLocator.getByRole('link').first()).toContainText("Out of stock");
         });
+    });
 
 
+    test("Validate products data is loading from the Har file ", async ({ page, loginPage, homePage }) => {
+        const email = process.env.EMAIL;
+        const password = process.env.PASSWORD;
 
+        await test.step("Mocked Products", async () => {
+            await page.routeFromHAR(".hars/product.har", {
+                url: `${process.env.API_URL}/products**`,
+                update: true,
+            });
+        });
+        await loginPage.goto();
+        await loginPage.loginIntoSystem(email, password);
+        await page.waitForTimeout(5000);
+        await homePage.navigateToHome();
+        await page.waitForTimeout(8000);
+
+        const productLocator = homePage.productLocator;
+        await expect(productLocator).toContainText("Combination Pliers");
+        await expect(productLocator).toContainText("14.15");
     });
 });

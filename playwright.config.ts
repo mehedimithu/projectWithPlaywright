@@ -9,7 +9,7 @@ import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
-const authFile = '.auth/customer01.json';
+const authFile = '.storage/authToken.json';
 
 // function to ensure the auth directory exists
 export const ensureAuthDirExists = () => {
@@ -47,7 +47,7 @@ export default defineConfig({
   },
   use: {
     //storageState: '.auth/customer.json', // <— load cookies automatically
-    //baseURL: process.env.BASE_URL,
+    baseURL: process.env.BASE_URL,
     // headless: true,
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
