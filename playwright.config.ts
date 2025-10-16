@@ -28,19 +28,24 @@ export default defineConfig({
   use: {
     //storageState: 'auth/customer01.json', // <— load cookies automatically
     //baseURL: process.env.BASE_URL,
-   // headless: true,
+    // headless: true,
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    timezoneId: "Asia/Dhaka",
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        //viewport: {width:1280 , height: 720 },
+       // permissions: ["geolocation"]
+      },
     },
 
     {
