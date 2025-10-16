@@ -15,7 +15,7 @@ Before installing Playwright, ensure the following are installed on your system:
   node -v
   •npm or yarn
   •VS Code (recommended)
-  •	Git (for version control)
+  •Git (for version control)
   ```
 
 ⚙️ 2. Install Playwright
