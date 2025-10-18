@@ -1,6 +1,5 @@
 
 import { test, expect } from "@fixtures/base.fixture";
-import { join } from "path";
 
 test.describe.configure({ mode: 'serial' });
 
