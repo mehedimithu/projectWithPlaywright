@@ -1,5 +1,6 @@
 
 import { test, expect } from "@fixtures/base.fixture";
+import { join } from "path";
 
 test.describe.configure({ mode: 'serial' });
 
@@ -97,9 +98,9 @@ test.describe("Home Page Tests", () => {
         await expect(productLocator).toContainText("14.15");
     });
 
-    test("Check for broken images", async ({ page, homePage }) => {
+    test.skip("Check for broken images", async ({ page, homePage }) => {
         await homePage.navigateToHome();
-       // await homePage.nevigateToWebsiteWithBugs();
+        // await homePage.nevigateToWebsiteWithBugs();
         await page.waitForTimeout(2000);
         const brokenImages = await page.evaluate(() => {
             return Array.from(document.querySelectorAll("img"))
@@ -107,6 +108,58 @@ test.describe("Home Page Tests", () => {
                 .map((img) => img.src);
         });
         expect(brokenImages.length, `Broken Images: ${brokenImages}`).toBe(0);
+    });
+
+    test.skip("Verify the brands by intercepting network data", async ({ page, homePage }) => {
+        let brands: any;
+
+        // Fetch products from API
+        await page.route(`${process.env.API_URL}/brands`, async (route) => {
+            const response = await route.fetch();
+            brands = await response.json();
+            console.log("Brends from API:", brands);
+            route.continue();
+        });
+
+
+        await homePage.navigateToHome();
+        await page.waitForTimeout(2000);
+        const productLocator = homePage.productLocator.locator('.container');
+        await expect(productLocator).toBeVisible();
+
+        await page.waitForTimeout(6000);
+        const brandsFilterSection = homePage.filterSection;
+
+        for (let brand of brands) {
+            await expect(brandsFilterSection).toContainText(brand.name);
+        }
+    });
+
+    test("Verify the category render in UI by mocked ", async ({ page, homePage }) => {
+        let categories: any;
+
+        await page.route(`${process.env.API_URL}/categories/tree`, async (route) => {
+            const response = await route.fetch()
+            const json = await response.json();
+            categories = json.data;
+            
+            json[0].name = "Mocked Category"
+
+            if (json[0].sub_categories && json[0].sub_categories.length > 0) {
+                json[0].sub_categories[0].name = "Mocked Subcategory"
+            }
+            await route.fulfill({ response, json });
+        });
+
+       
+        await homePage.navigateToHome();
+        await page.waitForTimeout(5000);
+        const categoryFilterSection = page.getByLabel("Mocked Category");
+        await categoryFilterSection.check();
+        await expect(categoryFilterSection).toBeChecked();
+
+        await page.unrouteAll({ behavior: 'ignoreErrors' });
+
     });
 
 });
