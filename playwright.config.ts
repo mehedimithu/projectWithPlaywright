@@ -29,6 +29,12 @@ export const ensureAuthDirExists = () => {
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  webServer: {
+    command: "npm run start",
+    port: 5173,
+    timeout: 100 * 1000,
+    reuseExistingServer: !process.env.CI
+  },
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,

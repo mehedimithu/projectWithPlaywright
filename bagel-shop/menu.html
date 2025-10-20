@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bagel Shop - Menu</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/menu.html">Menu</a></li>
+        <li><a href="/order.html">Order</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Our Menu</h1>
+
+      <table id="menuTable">
+        <thead>
+          <tr>
+            <th>Bagel Type</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Plain</td>
+            <td>Classic and simple</td>
+            <td>$2.50</td>
+            <td><button onclick="addToCart('Plain')">Add to Cart</button></td>
+          </tr>
+          <tr class="featured">
+            <td>Everything</td>
+            <td>All the toppings you love</td>
+            <td>$3.00</td>
+            <td>
+              <button onclick="addToCart('Everything')">Add to Cart</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Sesame</td>
+            <td>Toasted sesame seeds</td>
+            <td>$2.75</td>
+            <td><button onclick="addToCart('Sesame')">Add to Cart</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+
+    <script src="/js/menu.js"></script>
+  </body>
+</html>

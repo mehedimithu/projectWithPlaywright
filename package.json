@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "cd bagel-shop && npm run start",
+    "install:bagel-shop": "cd bagel-shop && npm install",
+    "test": "npx playwright test",
+    "test:chromium": "npx playwright test --project chromium"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

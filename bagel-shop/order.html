@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bagel Shop - Order</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/menu.html">Menu</a></li>
+        <li><a href="/order.html">Order</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>Place Your Order</h1>
+
+      <form id="orderForm" onsubmit="return handleOrder(event)">
+        <div class="form-group">
+          <label>Upload Your Custom Design:</label>
+          <input type="file" id="designUpload" accept="image/*" />
+        </div>
+
+        <div class="form-group">
+          <label>Special Instructions:</label>
+          <textarea id="instructions"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Quantity:</label>
+          <input type="number" id="quantity" min="1" value="1" />
+        </div>
+
+        <button type="submit">Place Order</button>
+      </form>
+
+      <div id="downloadSection" style="display: none">
+        <h3>Your Order Receipt</h3>
+        <button onclick="downloadReceipt()">Download Receipt</button>
+      </div>
+    </main>
+
+    <script src="/js/order.js"></script>
+  </body>
+</html>
