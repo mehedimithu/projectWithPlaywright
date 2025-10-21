@@ -1,5 +1,0 @@
-Order Receipt
--------------
-Date: 10/21/2025
-Quantity: 5
-Total: $14.950000000000001
