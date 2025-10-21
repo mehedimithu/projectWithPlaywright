@@ -9,20 +9,6 @@ test.describe("Bagel shop contect page", async () => {
     });
 
     test("Contect Page", async ({ page }) => {
-        await test.step.skip("Validate popup promocode text", async () => {
-
-            await page.goto(`${process.env.LOCALHOST_URL}`, { waitUntil: "load" });
-
-            const promocodeBtn = page.getByRole("button", { name: "Get Promo Code" });
-
-            // ✅ Wait for popup while clicking the button
-            const [popup] = await Promise.all([
-                page.waitForEvent("popup"),
-                promocodeBtn.click(),
-            ]);
-
-            await expect(popup.getByText("The promo code is:")).toBeVisible();
-        });
 
         await test.step("Verify the contact message to send options", async () => {
             const contactLink = page.getByRole('link', { name: 'Contact' });
