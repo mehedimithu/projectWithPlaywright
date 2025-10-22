@@ -6,6 +6,7 @@
       "@pages/*": ["lib/pages/*"],
       "@helpers/*": ["lib/helpers/*"],
       "@fixtures/*": ["lib/fixtures/*"]
-    }
+    },
+    "module": "commonjs"
   }
 }

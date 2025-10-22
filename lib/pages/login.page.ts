@@ -5,12 +5,14 @@ export class LoginPage {
     readonly emailInput: Locator;
     readonly passwordInput: Locator;
     readonly loginButton: Locator;
+    readonly menuButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
         this.emailInput = page.getByPlaceholder('Your email');
         this.passwordInput = page.getByPlaceholder('Your password');
         this.loginButton = page.getByRole('button', { name: 'Login' });
+        this.menuButton = page.getByTestId('nav-menu');
     }
 
     async goto() {
