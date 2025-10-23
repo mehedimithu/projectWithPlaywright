@@ -1,6 +1,5 @@
 import { Given, When, Then, Before, After } from "@cucumber/cucumber";
 import { Page, Browser, chromium, expect } from "@playwright/test";
-import { LoginPage } from "@pages/login.page";
 
 let browser: Browser;
 let page: Page;
@@ -32,19 +31,16 @@ When("the user enters a valid username and password", async () => {
 });
 When("the user clicks the login button", async () => {
     const loginButton = page.getByRole('button', { name: 'Login' });
-    // The login button click is already handled in the previous step.
     await loginButton.click();
 });
 
 Then("the user should be redirected to the account page", async () => {
-
-    await page.waitForTimeout(2000); // Wait for navigation to complete
+    await page.waitForTimeout(2000); 
     const pageTitle = page.locator('[data-test="page-title"]');
     await expect(pageTitle).toContainText("My account");
 });
 
 
 Then("a username Jane Doe should be displayed", async () => {
-      const userMenu = page.getByTestId('nav-menu');
-  await expect(userMenu).toHaveText('Jane Doe', { timeout: 10000 });
+await expect(page.locator('a.nav-link', { hasText: 'Jane Doe' })).toBeVisible();
 });
