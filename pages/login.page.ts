@@ -20,11 +20,11 @@ export class LoginPage {
     }
 
     async goto() {
-        const baseUrl = process.env.BASE_URL
+        const baseUrl = "https://practicesoftwaretesting.com"
         await this.page.goto(baseUrl + "/auth/login");
     }
 
-    async login(email: string, password: string) {
+    async loginIntoSystem(email: string, password: string) {
         await this.emailInput.fill(email);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
